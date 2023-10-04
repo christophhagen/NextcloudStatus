@@ -61,7 +61,7 @@ public struct NextcloudStatusClient {
     /**
      Get the current status of the nextcloud instance.
      */
-    func status() async throws -> NextcloudStatus {
+    public func status() async throws -> NextcloudStatus {
         try await rawStatus().converted()
     }
 
@@ -73,7 +73,7 @@ public struct NextcloudStatusClient {
 
      This function is recommended when ``getStatus()`` throws errors related to decoding.
      */
-    func rawStatus() async throws -> NextcloudStatusJson {
+    public func rawStatus() async throws -> NextcloudStatusJson {
         let data = try await getData()
         return try JSONDecoder().decode(NextcloudStatusJson.self, from: data)
     }
@@ -82,7 +82,7 @@ public struct NextcloudStatusClient {
      Get the raw status returned by the nextcloud status request.
      - Returns: The JSON response, or `nil`, if the response is not a valid string.
      */
-    func jsonStatus() async throws -> String? {
+    public func jsonStatus() async throws -> String? {
         let data = try await getData()
         return .init(data: data, encoding: .utf8)
     }
