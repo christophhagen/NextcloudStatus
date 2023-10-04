@@ -1,6 +1,6 @@
 import Foundation
 
-extension NextCloudJsonStatus.OCS.NextcloudData.Nextcloud {
+extension NextcloudStatusJson.OCS.NextcloudData.Nextcloud {
 
     public struct Storage {
 
@@ -18,10 +18,10 @@ extension NextCloudJsonStatus.OCS.NextcloudData.Nextcloud {
     }
 }
 
-extension NextCloudJsonStatus.OCS.NextcloudData.Nextcloud.Storage: Codable {
+extension NextcloudStatusJson.OCS.NextcloudData.Nextcloud.Storage: Codable {
 
 }
 
-extension NextCloudJsonStatus.OCS.NextcloudData.Nextcloud.Storage: Equatable {
+extension NextcloudStatusJson.OCS.NextcloudData.Nextcloud.Storage: Equatable {
 
 }

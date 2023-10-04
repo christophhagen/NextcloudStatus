@@ -1,6 +1,6 @@
 import Foundation
 
-extension NextCloudJsonStatus.OCS.NextcloudData.Nextcloud {
+extension NextcloudStatusJson.OCS.NextcloudData.Nextcloud {
 
     public struct System {
 
@@ -38,7 +38,7 @@ extension NextCloudJsonStatus.OCS.NextcloudData.Nextcloud {
     }
 }
 
-extension NextCloudJsonStatus.OCS.NextcloudData.Nextcloud.System: Codable {
+extension NextcloudStatusJson.OCS.NextcloudData.Nextcloud.System: Codable {
 
     enum CodingKeys: String, CodingKey {
         case version
@@ -60,6 +60,6 @@ extension NextCloudJsonStatus.OCS.NextcloudData.Nextcloud.System: Codable {
     }
 }
 
-extension NextCloudJsonStatus.OCS.NextcloudData.Nextcloud.System: Equatable {
+extension NextcloudStatusJson.OCS.NextcloudData.Nextcloud.System: Equatable {
 
 }

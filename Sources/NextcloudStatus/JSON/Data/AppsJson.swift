@@ -1,6 +1,6 @@
 import Foundation
 
-extension NextCloudJsonStatus.OCS.NextcloudData.Nextcloud.System {
+extension NextcloudStatusJson.OCS.NextcloudData.Nextcloud.System {
 
     public struct Apps {
 
@@ -12,7 +12,7 @@ extension NextCloudJsonStatus.OCS.NextcloudData.Nextcloud.System {
     }
 }
 
-extension NextCloudJsonStatus.OCS.NextcloudData.Nextcloud.System.Apps: Codable {
+extension NextcloudStatusJson.OCS.NextcloudData.Nextcloud.System.Apps: Codable {
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
@@ -31,6 +31,6 @@ extension NextCloudJsonStatus.OCS.NextcloudData.Nextcloud.System.Apps: Codable {
     }
 }
 
-extension NextCloudJsonStatus.OCS.NextcloudData.Nextcloud.System.Apps: Equatable {
+extension NextcloudStatusJson.OCS.NextcloudData.Nextcloud.System.Apps: Equatable {
 
 }

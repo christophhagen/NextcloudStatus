@@ -1,6 +1,6 @@
 import Foundation
 
-extension NextCloudJsonStatus.OCS.NextcloudData.Server {
+extension NextcloudStatusJson.OCS.NextcloudData.Server {
 
     public struct PHP {
 
@@ -20,10 +20,10 @@ extension NextCloudJsonStatus.OCS.NextcloudData.Server {
     }
 }
 
-extension NextCloudJsonStatus.OCS.NextcloudData.Server.PHP: Codable {
+extension NextcloudStatusJson.OCS.NextcloudData.Server.PHP: Codable {
 
 }
 
-extension NextCloudJsonStatus.OCS.NextcloudData.Server.PHP: Equatable {
+extension NextcloudStatusJson.OCS.NextcloudData.Server.PHP: Equatable {
 
 }
