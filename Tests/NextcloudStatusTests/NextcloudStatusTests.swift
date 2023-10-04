@@ -1,21 +1,50 @@
 import XCTest
 @testable import NextcloudStatus
+import BinaryCodable
 
 final class NextcloudStatusTests: XCTestCase {
 
-    private func check(input: String) throws {
+    private func decode(input: String) throws -> NextcloudStatusJson {
         let decoder = JSONDecoder()
-
         let data = input.data(using: .utf8)!
-        let decoded = try decoder.decode(NextCloudJsonStatus.self, from: data)
+        return try decoder.decode(NextcloudStatusJson.self, from: data)
+    }
+
+    private func check(input: String) throws {
+        let decoded = try decode(input: input)
         let encoded = try JSONEncoder().encode(decoded)
-        let secondDecode = try decoder.decode(NextCloudJsonStatus.self, from: encoded)
+        let secondDecode = try JSONDecoder().decode(NextcloudStatusJson.self, from: encoded)
         XCTAssertEqual(decoded, secondDecode)
     }
 
     func testNextcloudJsonDecoding() throws {
         try check(input: nextcloudTestData1)
         try check(input: nextcloudTestData2)
+    }
+
+    @discardableResult
+    private func convert(input: String) throws -> NextcloudStatus {
+        try decode(input: input).converted()
+    }
+
+    func testConversion() throws {
+        try convert(input: nextcloudTestData1)
+        try convert(input: nextcloudTestData2)
+    }
+
+    func encodeAndCompare(input: String) throws {
+        let decoded = try decode(input: input)
+        let converted = try decoded.converted()
+        let encodedOriginal = try BinaryEncoder().encode(decoded)
+        let encodedMinimized = try BinaryEncoder().encode(converted)
+        let ratio = Double(encodedMinimized.count) / Double(encodedOriginal.count)
+        print("Original: \(encodedOriginal.count), minimized: \(encodedMinimized.count), ratio: \(ratio)")
+        XCTAssertLessThan(encodedMinimized.count, encodedOriginal.count)
+    }
+
+    func testEncodeConverted() throws {
+        try encodeAndCompare(input: nextcloudTestData1)
+        try encodeAndCompare(input: nextcloudTestData2)
     }
 }
 

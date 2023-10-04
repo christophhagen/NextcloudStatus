@@ -10,11 +10,14 @@ let package = Package(
             name: "NextcloudStatus",
             targets: ["NextcloudStatus"]),
     ],
+    dependencies: [
+        .package(url: "https://github.com/christophhagen/BinaryCodable", from: .init(2, 0, 0))
+    ],
     targets: [
         .target(
             name: "NextcloudStatus"),
         .testTarget(
             name: "NextcloudStatusTests",
-            dependencies: ["NextcloudStatus"]),
+            dependencies: ["NextcloudStatus", "BinaryCodable"]),
     ]
 )
