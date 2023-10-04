@@ -23,7 +23,7 @@ import NextcloudStatus
 
 let client = NextcloudStatusClient(
     url: "https://nextcloud.example.com",
-    token: "mySecret)
+    token: "mySecret")
     
 let status = try await client.status()
 print(status.data.nextcloud.system.version)
