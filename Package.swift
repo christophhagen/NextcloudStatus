@@ -4,7 +4,7 @@ import PackageDescription
 
 let package = Package(
     name: "NextcloudStatus",
-    platforms: [.macOS(.v10_13), .iOS(.v12), .watchOS(.v4)],
+    platforms: [.macOS(.v12), .iOS(.v15), .watchOS(.v8)],
     products: [
         .library(
             name: "NextcloudStatus",
