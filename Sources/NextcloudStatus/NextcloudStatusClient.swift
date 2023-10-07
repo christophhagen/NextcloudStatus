@@ -16,7 +16,14 @@ import FoundationNetworking
  occ config:app:set serverinfo token --value <token>
  ```
  */
-public let nextcloudStatusUrlSuffix = "/ocs/v2.php/apps/serverinfo/api/v1/info?format=json"
+public let nextcloudStatusUrlSuffix = "/ocs/v2.php/apps/serverinfo/api/v1/info"
+
+/**
+ The query parameter to request JSON output instead of XML.
+
+ Used together with ``nextcloudStatusUrlSuffix`` to build the full url to the nextcloud JSON status.
+ */
+public let nextcloudStatusUrlJsonFormatQueryParameter = "?format=json"
 
 /**
  The HTTP request header key to transmit the access token during a Nextcloud status request.
@@ -25,13 +32,22 @@ public let nextcloudStatusAccessTokenHeaderKey = "NC-Token"
 
 public struct NextcloudStatusClient {
 
-    public let url: URL
+    /**
+     The authentication token of the nextcloud instance
 
+     The access token must be set for the nextcloud instance.
+     With nextcloud-snap, this can be achieved with the following command:
+     ```
+     nextcloud.occ config:app:set serverinfo token --value <token>
+     */
     public let token: String
 
+    /**
+     The URL session to use for the requests.
+     */
     public let session: URLSession
 
-    let request: URLRequest
+    private let request: URLRequest
 
     /**
      Create a new client.
@@ -50,11 +66,14 @@ public struct NextcloudStatusClient {
      ```
      */
     public init(url: URL, token: String, session: URLSession = .shared) {
-        self.url = url
         self.token = token
         self.session = session
-        var request = URLRequest(url: url.appendingPathComponent(nextcloudStatusUrlSuffix))
+        
+        let urlString = url.appendingPathComponent(nextcloudStatusUrlSuffix).absoluteString + nextcloudStatusUrlJsonFormatQueryParameter
+        let url = URL(string: urlString)!
+        var request = URLRequest(url: url)
         request.setValue(token, forHTTPHeaderField: nextcloudStatusAccessTokenHeaderKey)
+
         self.request = request
     }
 
