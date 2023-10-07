@@ -80,7 +80,7 @@ extension NextcloudStatus.NextcloudData.Nextcloud.System {
         self.hasAvatarsEnabled = try Self.convert(bool: json.enable_avatars, key: .hasAvatarsEnabled)
         self.hasPreviewsEnabled = try Self.convert(bool: json.enable_previews, key: .hasPreviewsEnabled)
         self.localMemcachePath = json.memcacheLocal
-        self.distributedMemcachePath = json.memcacheDistributed
+        self.distributedMemcachePath = .init(possible: json.memcacheDistributed)
         self.isFilelockingEnabled = try Self.convert(bool: json.filelockingEnabled, key: .isFilelockingEnabled)
         self.lockingMemcachePath = json.memcacheLocking
         self.isInDebugMode = try Self.convert(bool: json.debug, key: .isInDebugMode)
@@ -116,6 +116,18 @@ private extension String {
             return false
         default:
             return nil
+        }
+    }
+}
+
+private extension Optional where Wrapped == String {
+
+    init(possible: String) {
+        switch possible.lowercased() {
+        case "none", "nil":
+            self = .none
+        default:
+            self = possible
         }
     }
 }
