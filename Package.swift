@@ -11,7 +11,7 @@ let package = Package(
             targets: ["NextcloudStatus"]),
     ],
     dependencies: [
-        .package(url: "https://github.com/christophhagen/BinaryCodable", from: .init(2, 0, 0))
+        .package(url: "https://github.com/christophhagen/BinaryCodable", from: "2.0.0")
     ],
     targets: [
         .target(

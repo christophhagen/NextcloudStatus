@@ -1,5 +1,14 @@
 import Foundation
 
+/**
+ Re-export the `SemanticVersion` type from Clairvoyant if possible, to prevent unnecessary type conversions.
+ */
+#if canImport(Clairvoyant)
+
+@_exported import struct Clairvoyant.SemanticVersion
+
+#else
+
 public struct SemanticVersion {
 
     /// The major version of the software
@@ -101,3 +110,5 @@ extension SemanticVersion: Comparable {
         return lhsPatch < rhsPatch
     }
 }
+
+#endif
