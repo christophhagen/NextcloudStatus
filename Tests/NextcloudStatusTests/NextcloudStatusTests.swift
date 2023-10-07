@@ -46,11 +46,6 @@ final class NextcloudStatusTests: XCTestCase {
         try encodeAndCompare(input: nextcloudTestData1)
         try encodeAndCompare(input: nextcloudTestData2)
     }
-
-    func testUnauthorized() throws {
-        let info = try decode(input: unauthorizedData)
-        XCTAssertEqual(info.ocs.data.message, "Unauthorized")
-    }
 }
 
 
@@ -275,9 +270,4 @@ private let nextcloudTestData2 =
 }
 
 
-"""
-
-let unauthorizedData =
-"""
-{"ocs":{"meta":{"status":"failure","statuscode":401,"message":""},"data":{"message":"Unauthorized"}}}
 """

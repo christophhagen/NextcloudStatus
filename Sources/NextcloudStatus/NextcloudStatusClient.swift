@@ -107,6 +107,13 @@ public struct NextcloudStatusClient {
     }
 
     private func getData() async throws -> Data {
-        try await session.data(for: request).0
+        let (data, response) = try await session.data(for: request)
+        guard let resp = response as? HTTPURLResponse else {
+            throw NextcloudError.invalidResponse(statusCode: nil)
+        }
+        guard resp.statusCode == 200 else {
+            throw NextcloudError.invalidResponse(statusCode: resp.statusCode)
+        }
+        return data
     }
 }
