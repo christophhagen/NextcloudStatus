@@ -72,8 +72,8 @@ extension NextcloudStatus.NextcloudData.Nextcloud.System {
                 NextcloudStatus.CodingKeys.data,
                 NextcloudStatus.NextcloudData.Nextcloud.CodingKeys.system,
                 CodingKeys.version
-            ], debugDescription: "The version string is invalid")
-            throw DecodingError.typeMismatch(SemanticVersion.self, context)
+            ], debugDescription: "The version string '\(json.version)' is invalid")
+            throw DecodingError.typeMismatch(NextcloudVersion.self, context)
         }
         self.version = version
         self.theme = json.theme

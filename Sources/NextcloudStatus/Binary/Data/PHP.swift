@@ -4,7 +4,7 @@ extension NextcloudStatus.NextcloudData.Server {
 
     public struct PHP {
 
-        public let version: SemanticVersion
+        public let version: NextcloudVersion
 
         public let memoryLimit: Int
 
@@ -40,14 +40,14 @@ extension NextcloudStatus.NextcloudData.Server.PHP: Equatable {
 extension NextcloudStatus.NextcloudData.Server.PHP {
 
     init(json: NextcloudStatusJson.OCS.NextcloudData.Server.PHP) throws {
-        guard let version = SemanticVersion(rawValue: json.version) else {
+        guard let version = NextcloudVersion(rawValue: json.version) else {
             let context = DecodingError.Context(codingPath: [
                 NextcloudStatus.CodingKeys.data,
                 NextcloudStatus.NextcloudData.CodingKeys.server,
                 NextcloudStatus.NextcloudData.Server.CodingKeys.php,
                 CodingKeys.version
-            ], debugDescription: "The version string is invalid")
-            throw DecodingError.typeMismatch(SemanticVersion.self, context)
+            ], debugDescription: "The version string '\(json.version)' is invalid")
+            throw DecodingError.typeMismatch(NextcloudVersion.self, context)
         }
         self.version = version
         self.memoryLimit = json.memory_limit

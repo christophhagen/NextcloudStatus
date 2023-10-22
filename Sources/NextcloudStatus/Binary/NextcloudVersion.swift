@@ -49,11 +49,10 @@ extension NextcloudVersion: RawRepresentable {
 
         guard parts.count == 4 else {
             self.build = nil
-            return nil
+            return
         }
         guard let build = Int(parts[3]) else {
-            self.build = nil
-            return
+            return nil
         }
         self.build = build
     }
