@@ -23,10 +23,9 @@ extension NextcloudStatus.NextcloudData.Nextcloud {
 
         public let numberOfFederatedSharesReceived: Int
 
-        public let permissions3_17: Int
+        public let permissions3_17: Int?
 
-        public let permissions3_31: Int
-
+        public let permissions3_31: Int?
     }
 }
 
