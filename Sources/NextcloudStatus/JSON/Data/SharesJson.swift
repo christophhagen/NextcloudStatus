@@ -23,9 +23,9 @@ extension NextcloudStatusJson.OCS.NextcloudData.Nextcloud {
 
         public let num_fed_shares_received: Int
 
-        public let permissions_3_31: Int
+        public let permissions_3_31: Int?
 
-        public let permissions_3_17: Int
+        public let permissions_3_17: Int?
 
     }
 }
