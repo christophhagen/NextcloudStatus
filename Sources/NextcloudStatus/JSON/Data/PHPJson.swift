@@ -12,6 +12,8 @@ extension NextcloudStatusJson.OCS.NextcloudData.Server {
 
         public let upload_max_filesize: Int
 
+        public let opcache_revalidate_freq: Int?
+
         public let opcache: Opcache?
 
         public let apcu: [String]?

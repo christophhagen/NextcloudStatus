@@ -26,6 +26,8 @@ extension NextcloudStatus.NextcloudData.Nextcloud {
 
         public let cpuLoads: [Double]
 
+        public let numberOfCpus: Int?
+
         public let totalMemory: Int
 
         public let freeMemory: Int
@@ -34,7 +36,7 @@ extension NextcloudStatus.NextcloudData.Nextcloud {
 
         public let freeSwap: Int
 
-        public let apps: Apps
+        public let apps: Apps?
     }
 }
 
@@ -57,6 +59,7 @@ extension NextcloudStatus.NextcloudData.Nextcloud.System: Codable {
         case totalSwap
         case freeSwap
         case apps
+        case numberOfCpus
     }
 }
 
@@ -86,11 +89,16 @@ extension NextcloudStatus.NextcloudData.Nextcloud.System {
         self.isInDebugMode = try Self.convert(bool: json.debug, key: .isInDebugMode)
         self.freeSpace = json.freespace
         self.cpuLoads = json.cpuload
+        self.numberOfCpus = json.cpunum
         self.totalMemory = json.mem_total
         self.freeMemory = json.mem_free
         self.totalSwap = json.swap_total
         self.freeSwap = json.swap_free
-        self.apps = .init(json: json.apps)
+        if let apps = json.apps {
+            self.apps = .init(json: apps)
+        } else {
+            self.apps = nil
+        }
     }
 
     private static func convert(bool: String, key: CodingKeys) throws -> Bool {

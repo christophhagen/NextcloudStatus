@@ -9,6 +9,16 @@ extension NextcloudStatusJson.OCS.NextcloudData {
         public let last1hour: Int
 
         public let last24hours: Int
+
+        public let last7days: Int?
+
+        public let last1month: Int?
+
+        public let last3months: Int?
+
+        public let last6months: Int?
+
+        public let lastyear: Int?
     }
 }
 

@@ -30,6 +30,8 @@ final class NextcloudStatusTests: XCTestCase {
     func testConversion() throws {
         try convert(input: nextcloudTestData1)
         try convert(input: nextcloudTestData2)
+        try convert(input: nextcloudTestData3)
+        try convert(input: nextcloudTestData4)
     }
 
     func encodeAndCompare(input: String) throws {
@@ -46,9 +48,9 @@ final class NextcloudStatusTests: XCTestCase {
         try encodeAndCompare(input: nextcloudTestData1)
         try encodeAndCompare(input: nextcloudTestData2)
         try encodeAndCompare(input: nextcloudTestData3)
+        try encodeAndCompare(input: nextcloudTestData4)
     }
 }
-
 
 private let nextcloudTestData1 =
 
@@ -278,3 +280,9 @@ private let nextcloudTestData3 =
 """
 {"ocs":{"meta":{"status":"ok","statuscode":200,"message":"OK"},"data":{"nextcloud":{"system":{"version":"27.1.6.2","theme":"","enable_avatars":"yes","enable_previews":"yes","memcache.local":"\\\\OC\\\\Memcache\\\\Redis","memcache.distributed":"none","filelocking.enabled":"yes","memcache.locking":"\\\\OC\\\\Memcache\\\\Redis","debug":"no","freespace":168799322112,"cpuload":[0.1,0.16,0.12],"mem_total":8133632,"mem_free":6948864,"swap_total":0,"swap_free":0,"apps":{"num_installed":44,"num_updates_available":0,"app_updates":[]}},"storage":{"num_users":2,"num_files":8264,"num_storages":5,"num_storages_local":3,"num_storages_home":2,"num_storages_other":0},"shares":{"num_shares":2,"num_shares_user":0,"num_shares_groups":0,"num_shares_link":2,"num_shares_mail":0,"num_shares_room":0,"num_shares_link_no_password":2,"num_fed_shares_sent":0,"num_fed_shares_received":0,"permissions_3_31":2}},"server":{"webserver":"Apache","php":{"version":"8.2.15","memory_limit":536870912,"max_execution_time":3600,"upload_max_filesize":17179869184,"opcache":{"opcache_enabled":true,"cache_full":false,"restart_pending":false,"restart_in_progress":false,"memory_usage":{"used_memory":70573696,"free_memory":62666176,"wasted_memory":977856,"current_wasted_percentage":0.7285594940185547},"interned_strings_usage":{"buffer_size":33554432,"used_memory":13867408,"free_memory":19687024,"number_of_strings":82548},"opcache_statistics":{"num_cached_scripts":1988,"num_cached_keys":3858,"max_cached_keys":16229,"hits":6170704,"start_time":1708184629,"last_restart_time":0,"oom_restarts":0,"hash_restarts":0,"manual_restarts":0,"misses":2044,"blacklist_misses":0,"blacklist_miss_ratio":0,"opcache_hit_rate":99.96688670912857},"jit":{"enabled":false,"on":false,"kind":5,"opt_level":4,"opt_flags":6,"buffer_size":0,"buffer_free":0}},"apcu":[],"extensions":["Core","date","libxml","openssl","pcre","zlib","bcmath","bz2","ctype","curl","dom","hash","fileinfo","filter","ftp","gd","gmp","json","iconv","intl","SPL","ldap","mbstring","pcntl","PDO","session","posix","random","Reflection","standard","SimpleXML","sodium","mysqlnd","exif","sysvsem","tokenizer","xml","xmlreader","xmlwriter","zip","pdo_mysql","cgi-fcgi","redis","Zend OPcache"]},"database":{"type":"mysql","version":"8.0.36","size":"25231360"}},"activeUsers":{"last5minutes":2,"last1hour":2,"last24hours":2}}}}
 """
+
+private let nextcloudTestData4 =
+"""
+{"ocs":{"meta":{"status":"ok","statuscode":200,"message":"OK"},"data":{"nextcloud":{"system":{"version":"30.0.5.1","theme":"","enable_avatars":"yes","enable_previews":"yes","memcache.local":"\\\\OC\\\\Memcache\\\\Redis","memcache.distributed":"none","filelocking.enabled":"yes","memcache.locking":"\\\\OC\\\\Memcache\\\\Redis","debug":"no","freespace":298794942464,"cpuload":[0.13,0.12,0.09],"cpunum":4,"mem_total":8127488,"mem_free":6441984,"swap_total":0,"swap_free":0},"storage":{"num_users":2,"num_files":26921,"num_storages":5,"num_storages_local":3,"num_storages_home":2,"num_storages_other":0},"shares":{"num_shares":9,"num_shares_user":0,"num_shares_groups":0,"num_shares_link":9,"num_shares_mail":0,"num_shares_room":0,"num_shares_link_no_password":9,"num_fed_shares_sent":0,"num_fed_shares_received":0,"permissions_3_31":7,"permissions_3_17":2}},"server":{"webserver":"Apache","php":{"version":"8.3.14","memory_limit":536870912,"max_execution_time":3600,"upload_max_filesize":17179869184,"opcache_revalidate_freq":2,"opcache":{"opcache_enabled":true,"cache_full":false,"restart_pending":false,"restart_in_progress":false,"memory_usage":{"used_memory":71883088,"free_memory":62334640,"wasted_memory":0,"current_wasted_percentage":0},"interned_strings_usage":{"buffer_size":33554432,"used_memory":14584112,"free_memory":18970320,"number_of_strings":88859},"opcache_statistics":{"num_cached_scripts":1974,"num_cached_keys":3831,"max_cached_keys":16229,"hits":17663530,"start_time":1737506764,"last_restart_time":0,"oom_restarts":0,"hash_restarts":0,"manual_restarts":0,"misses":2319,"blacklist_misses":0,"blacklist_miss_ratio":0,"opcache_hit_rate":99.98687297734742},"jit":{"enabled":false,"on":false,"kind":5,"opt_level":4,"opt_flags":6,"buffer_size":0,"buffer_free":0}},"apcu":[],"extensions":["pdo_mysql","cgi-fcgi","redis","Zend OPcache"]},"database":{"type":"mysql","version":"8.0.40","size":"48332800"}},"activeUsers":{"last5minutes":1,"last1hour":1,"last24hours":1,"last7days":1,"last1month":1,"last3months":1,"last6months":1,"lastyear":1}}}}
+"""
+

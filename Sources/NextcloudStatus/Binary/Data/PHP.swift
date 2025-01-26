@@ -12,6 +12,8 @@ extension NextcloudStatus.NextcloudData.Server {
 
         public let maximumFileUploadSize: Int
 
+        public let opcacheRevalidateFrequency: Int?
+
         public let opcache: Opcache?
 
         public let apcu: [String]
@@ -30,6 +32,7 @@ extension NextcloudStatus.NextcloudData.Server.PHP: Codable {
         case opcache = 5
         case apcu = 6
         case extensions = 7
+        case opcacheRevalidateFrequency = 8
     }
 }
 
@@ -55,6 +58,7 @@ extension NextcloudStatus.NextcloudData.Server.PHP {
         self.maximumFileUploadSize = json.upload_max_filesize
         self.apcu = json.apcu ?? []
         self.extensions = json.extensions ?? []
+        self.opcacheRevalidateFrequency = json.opcache_revalidate_freq
 
         guard let opcache = json.opcache else {
             self.opcache = nil

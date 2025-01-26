@@ -22,7 +22,7 @@ Create a client for one Nextcloud instance:
 import NextcloudStatus
 
 let client = NextcloudStatusClient(
-    url: "https://nextcloud.example.com",
+    url: URL(string: "https://nextcloud.example.com")!,
     token: "mySecret")
     
 let status = try await client.status()

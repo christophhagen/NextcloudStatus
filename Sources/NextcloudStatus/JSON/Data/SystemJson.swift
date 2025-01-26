@@ -26,6 +26,8 @@ extension NextcloudStatusJson.OCS.NextcloudData.Nextcloud {
 
         public let cpuload: [Double]
 
+        public let cpunum: Int?
+
         public let mem_total: Int
 
         public let mem_free: Int
@@ -52,6 +54,7 @@ extension NextcloudStatusJson.OCS.NextcloudData.Nextcloud.System: Codable {
         case debug
         case freespace
         case cpuload
+        case cpunum
         case mem_total
         case mem_free
         case swap_total
