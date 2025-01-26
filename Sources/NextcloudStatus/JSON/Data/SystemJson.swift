@@ -34,7 +34,7 @@ extension NextcloudStatusJson.OCS.NextcloudData.Nextcloud {
 
         public let swap_free: Int
 
-        public let apps: Apps
+        public let apps: Apps?
     }
 }
 
